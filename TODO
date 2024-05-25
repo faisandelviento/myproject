@@ -1,0 +1,15 @@
+CREAR UN FORMULARIO: (VIEW)
+    Elegir barrio
+    Elegir dia mes
+-> mostrar datos dde contaminación de la estación (VIEW)
+
+Importar CSV a MongoDB
+
+DATOS:
+    qualitat_aire_estacions.csv: contiene las diferente estaciones que hay 
+    en cada barriosy los contaminantes que mide cada una de ellas
+    quealitat_aire_contaminants.csv: contiene la lista de contaminantes 
+    quelaitat:aire_dades.csv: contiene los datos de contaminacion leidos
+    por cada una de las estaciones durante el mes de maro de 2024
+
+ENTREGA: link repositorio

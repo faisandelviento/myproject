@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav>CONTAMINANTES EN EL AIRE POR BARRIO</nav>
+    <div id="formulario">
+        <h1>Buscar la calidad del aire por barrio</h1>
+        <form method="post">
+            <label for="barrio">Barrio:</label>
+            <select id="barrio" name="barrio">
+                {% for barrio in barrios %}
+                    <option value="{{ barrio }}">{{ barrio }}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <label for="dia">Día del mes:</label>
+            <input type="number" id="dia" name="dia" min="1" max="20">
+            <br><br>
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+</html>
