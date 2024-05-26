@@ -17,17 +17,26 @@ def form():
 
     if request.method == 'POST':
         barrio = request.form['barrio']
-        dia = request.form['dia']
+        dia = int(request.form['dia'])
         documento_barrio = barrios_collection.find_one({"Nom_barri": barrio})
         numEstacion = documento_barrio["Estacio"]
         #segun el dia y el numEstacion todos los valores de CODI_CONTAMINANT 
-        numContaminante_cursor = datos_collection.find({"DIA": dia, "ESTACIO": numEstacion}, {"CODI_CONTAMINANT": 1})
-        numContaminante = [doc["CODI_CONTAMINANT"] for doc in numContaminante_cursor]
+        numContaminante = []
+        nombreContaminante = []
+        cantidadContaminante= []
+        unidadesContaminantes = []
+        
+        estacionSelect = datos_collection.find({"DIA": dia, "ESTACIO": numEstacion})
+        for dato in estacionSelect:
+            numContaminante.append(dato['CODI_CONTAMINANT'])
+            cantidadContaminante.append(dato['H12'])
+        for contaminante in numContaminante:
+            nombreContaminante.append(contaminantes_collection.find_one({"Codi_Contaminant":contaminante})['Desc_Contaminant'])
+            unidadesContaminantes.append(contaminantes_collection.find_one({"Codi_Contaminant":contaminante})['Unitats'])
 
-
-        ##nombreContaminante_doc = contaminantes_collection.find_one({"Codi_Contaminant": numContaminante}, {"Desc_Contaminant": 1})        
+        contaminantes = zip(nombreContaminante, cantidadContaminante, unidadesContaminantes)
     
-        return render_template('results.html', barrio=barrio, dia=dia, numEstacion=numEstacion, numContaminante=numContaminante)
+        return render_template('results.html', barrio=barrio, dia=dia, contaminantes=contaminantes)
 
     barrios = barrios_collection.distinct("Nom_barri")
     return render_template('index.html', barrios=barrios)

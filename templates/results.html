@@ -11,8 +11,26 @@
         <h1>Resultado del Formulario</h1>
         <p>Barrio seleccionado: {{ barrio }}</p>
         <p>Día del mes seleccionado: {{ dia }}</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre del Contaminante</th>
+                    <th>Cantidad del Contaminante</th>
+                    <th>Unidades de los Contaminantes</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for nombre, cantidad, unidad in contaminantes %}
+                <tr>
+                    <td>{{ nombre }}</td>
+                    <td>{{ cantidad }}</td>
+                    <td>{{ unidad }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
         <a href="/">Volver al formulario</a>
-        <p>{{numContaminante}}</p>
+
     </div>
 </body>
 </html>

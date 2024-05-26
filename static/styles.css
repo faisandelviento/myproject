@@ -16,7 +16,7 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000; /* Para asegurarse de que esté encima de todo */
+    z-index: 1000; 
 }
 
 #formulario {
@@ -39,24 +39,22 @@ label {
     color: #555;
 }
 
-/* Ocultar estilos por defecto */
 select, input[type="number"] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    outline: none; /* Elimina el contorno al hacer foco */
+    outline: none; 
     background-color: #f0f4f8;
     width: 100%;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    padding: 8px; /* Ajusta el relleno según tus preferencias */
-    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+    padding: 8px; 
+    box-sizing: border-box; 
 }
 
-/* Estilo adicional para cuando se hace foco */
 select:focus, input[type="number"]:focus {
-    border-color: #007bff; /* Cambia el color del borde al hacer foco */
+    border-color: #007bff; 
 }
 
 
